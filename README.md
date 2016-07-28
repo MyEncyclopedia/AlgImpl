@@ -13,7 +13,8 @@ http://myencyclopedia.top/blog/category/algorithm/
 
 # 03_Algorithms_Sedgewick
 ## [Dijkstra Shortest Path (Java)](http://myencyclopedia.top/blog/2016/07/dijkstra-single-source-shortest-path/)
-## [Minimal Spanning Tree Prim Lazy(Java)]
+## Minimal Spanning Tree Prim Lazy (Java)
+## Minimal Spanning Tree Prim Eager (Java)
 
 # 03_Introduction_to_Algorithm
 ## [KMP (Java)](http://myencyclopedia.top/blog/2015/10/kmp/)
