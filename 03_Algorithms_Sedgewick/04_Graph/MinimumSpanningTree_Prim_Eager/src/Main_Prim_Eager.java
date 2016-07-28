@@ -9,58 +9,55 @@
  */
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-public class Main_Prim_Lazy {
+public class Main_Prim_Eager {
 
-    public static class MinimalSpanningTree_Prim_Lazy {
+    public static class MinimalSpanningTree_Prim_Eager {
 
         Integer[] edgeTo; // index is vertex
         boolean[] vertDone;
         int totalWeight;
 
-        public MinimalSpanningTree_Prim_Lazy(WeightedGraph graph) {
+        public MinimalSpanningTree_Prim_Eager(WeightedGraph graph) {
             edgeTo = new Integer[graph.numVertex];
             vertDone = new boolean[graph.numVertex];
 
-            PriorityQueue<WeightedGraph.Edge> minPQ = new PriorityQueue<WeightedGraph.Edge>(
-                    new Comparator<WeightedGraph.Edge>() {
-                @Override
-                public int compare(WeightedGraph.Edge e1, WeightedGraph.Edge e2) {
-                    return e1.weight - e2.weight;
-                }
-
-            });
-            HashSet<WeightedGraph.Edge> edgeSet = new HashSet<WeightedGraph.Edge>();
+            KeyValueMinHeap<Integer, VertexInfo> minPQ
+                    = new KeyValueMinHeap<Integer, VertexInfo>(new Comparator<VertexInfo>() {
+                        @Override
+                        public int compare(VertexInfo o1, VertexInfo o2) {
+                            return o1.weight - o2.weight;
+                        }
+                    });
             edgeTo[0] = 0;
             vertDone[0] = true;
             int vertLeft = graph.numVertex - 1;
             Iterator<WeightedGraph.Edge> itEdge = graph.getEdges(0);
             while (itEdge.hasNext()) {
                 WeightedGraph.Edge e = itEdge.next();
-                minPQ.add(e);
-                edgeSet.add(e);
+                minPQ.addOrUpdate(e.other(0), new VertexInfo(0, e.weight));
             }
             while (vertLeft > 0 && !minPQ.isEmpty()) {
-                WeightedGraph.Edge e = minPQ.remove();
-                if (vertDone[e.v1] == !vertDone[e.v2]) {
-                    totalWeight += e.weight;
-                    int vertInTree = vertDone[e.v1] ? e.v1 : e.v2;
-                    int vertNotIn = e.other(vertInTree);
-                    vertLeft--;
-                    vertDone[vertNotIn] = true;
-                    edgeTo[vertNotIn] = vertInTree;
-                    itEdge = graph.getEdges(vertNotIn);
-                    while (itEdge.hasNext()) {
-                        e = itEdge.next();
-                        if (!edgeSet.contains(e)) {
-                            minPQ.add(e);
-                            edgeSet.add(e);
+                KeyValueMinHeap.Pair<Integer, VertexInfo> pair = minPQ.remove();
+                int vert = pair.key;
+                VertexInfo vertInfo = pair.value;
+                edgeTo[vert] = vertInfo.fromVert;
+                vertDone[vert] = true;
+                vertLeft--;
+                totalWeight += vertInfo.weight;
+                itEdge = graph.getEdges(vert);
+                while (itEdge.hasNext()) {
+                    WeightedGraph.Edge e = itEdge.next();
+                    if (!vertDone[e.v1] || !vertDone[e.v2]) {
+                        vertInfo = minPQ.getValue(e.other(vert));
+                        if (vertInfo == null || e.weight < vertInfo.weight) {
+                            minPQ.addOrUpdate(e.other(vert), new VertexInfo(vert, e.weight));
                         }
                     }
                 }
@@ -82,6 +79,18 @@ public class Main_Prim_Lazy {
                 }
             }
             return paths;
+        }
+
+        class VertexInfo {
+
+            int fromVert;
+            int weight;
+
+            public VertexInfo(int fromVert, int weight) {
+                this.fromVert = fromVert;
+                this.weight = weight;
+            }
+
         }
     }
 
@@ -138,7 +147,63 @@ public class Main_Prim_Lazy {
                         }
                     }
                 }
+                return false;
+            }
+        }
+    }
 
+    public static class KeyValueMinHeap<K, V> {
+
+        Comparator<V> comparator;
+        HashMap<K, V> map = new HashMap<K, V>();
+        PriorityQueue<Pair<K, V>> minPQ = new PriorityQueue<Pair<K, V>>(new Comparator<Pair<K, V>>() {
+            @Override
+            public int compare(Pair<K, V> o1, Pair<K, V> o2) {
+                return comparator.compare(o1.value, o2.value);
+            }
+        });
+
+        public KeyValueMinHeap(Comparator<V> comparator) {
+            this.comparator = comparator;
+        }
+
+        public void addOrUpdate(K key, V value) {
+            Pair<K, V> pair = new Pair<K, V>(key, value);
+            if (map.containsKey(key)) {
+                minPQ.remove(pair);
+            }
+            map.put(key, value);
+            minPQ.add(pair);
+        }
+
+        public V getValue(K key) {
+            return map.get(key);
+        }
+
+        public Pair<K, V> remove() {
+            Pair<K, V> pair = minPQ.remove();
+            V v = map.remove(pair.key);
+            return pair;
+        }
+
+        public boolean isEmpty() {
+            return map.isEmpty();
+        }
+
+        public static class Pair<K, V> {
+
+            K key;
+            V value;
+
+            public Pair(K k, V v) {
+                key = k;
+                value = v;
+            }
+
+            public boolean equals(Object obj) {
+                if (obj instanceof Pair) {
+                    return key.equals(((Pair) obj).key);
+                }
                 return false;
             }
         }
@@ -157,7 +222,7 @@ public class Main_Prim_Lazy {
             graph.addEdge(v1, v2, weight);
         }
 
-        MinimalSpanningTree_Prim_Lazy mst = new MinimalSpanningTree_Prim_Lazy(graph);
+        MinimalSpanningTree_Prim_Eager mst = new MinimalSpanningTree_Prim_Eager(graph);
         System.out.println(mst.totalWeight());
     }
 }
