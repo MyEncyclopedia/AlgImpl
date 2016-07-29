@@ -4,8 +4,8 @@
  */
 /**
  * Result: AC
- * TC: O(E*log(V))
- * SC: O(N)
+ * TC: O(E*log(E))
+ * SC: O(E)
  */
 import java.util.ArrayList;
 import java.util.Comparator;

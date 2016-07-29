@@ -5,7 +5,7 @@
 /**
  * Result: AC
  * TC: O(E*log(V))
- * SC: O(N)
+ * SC: O(V)
  */
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -41,7 +41,10 @@ public class Main_Prim_Eager {
             Iterator<WeightedGraph.Edge> itEdge = graph.getEdges(0);
             while (itEdge.hasNext()) {
                 WeightedGraph.Edge e = itEdge.next();
-                minPQ.addOrUpdate(e.other(0), new VertexInfo(0, e.weight));
+                VertexInfo vertInfo = minPQ.getValue(e.other(0));
+                if (vertInfo == null || e.weight < vertInfo.weight) {
+                    minPQ.addOrUpdate(e.other(0), new VertexInfo(0, e.weight));
+                }
             }
             while (vertLeft > 0 && !minPQ.isEmpty()) {
                 KeyValueMinHeap.Pair<Integer, VertexInfo> pair = minPQ.remove();
