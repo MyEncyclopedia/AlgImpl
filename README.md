@@ -15,8 +15,9 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## [Dijkstra Shortest Path](http://myencyclopedia.top/blog/2016/07/dijkstra-single-source-shortest-path/)
 ## Minimal Spanning Tree Prim Lazy
 ## Minimal Spanning Tree Prim Eager
+## Minimal Spanning Tree Kruskal
 ## Union Find
 
-# 04_Introduction_to_Algorithm
-## [KMP (Java)](http://myencyclopedia.top/blog/2015/10/kmp/)
+# 04_Advanced_Data_Structure
+## Treap
 
