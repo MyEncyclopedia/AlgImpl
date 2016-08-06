@@ -20,4 +20,6 @@ http://myencyclopedia.top/blog/category/algorithm/
 
 # 04_Advanced_Data_Structure
 ## Treap
+## Segment Tree
+## Binary Indexed Tree
 
