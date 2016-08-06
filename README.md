@@ -22,4 +22,5 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## Treap
 ## Segment Tree
 ## Binary Indexed Tree
+## Trie
 
