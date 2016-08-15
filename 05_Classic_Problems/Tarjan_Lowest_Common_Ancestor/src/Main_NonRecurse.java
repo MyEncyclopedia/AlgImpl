@@ -86,7 +86,6 @@ public class Main_NonRecurse {
                     while (it.hasNext()) {
                         Query q = it.next();
                         if (checked[q.idOther]) {
-                            it.remove();
                             results[q.order] = nodeList.get(ancestor[uf.find(q.idOther)]).id;
                         }
                     }

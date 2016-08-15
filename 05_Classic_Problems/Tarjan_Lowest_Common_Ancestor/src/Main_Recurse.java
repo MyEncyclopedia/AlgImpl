@@ -93,7 +93,6 @@ public class Main_Recurse {
                 Query q = it.next();
                 int idOther = nameToId.get(q.nameOther);
                 if (checked[idOther]) {
-                    it.remove();
                     results[q.order] = nodeList.get(ancestor[uf.find(idOther)]).name;
                 }
             }
