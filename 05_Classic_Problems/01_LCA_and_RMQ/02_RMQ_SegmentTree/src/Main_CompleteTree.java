@@ -1,16 +1,22 @@
 
 /**
- * http://hihocoder.com/problemset/problem/1070
+ * http://hihocoder.com/problemset/problem/1077
  */
 /**
  * Result: AC
- * TC: Query   O(log(N))
+ * TC: Build   O(2N)
+ *     Query   O(log(N))
  *     Update  O(log(N))
- * SC: O(N)
+ * SC: O(2N)
  */
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.StreamTokenizer;
 
-public class Main_SegmentTree {
+public class Main_CompleteTree {
 
     public static class SegmentTree {
 
@@ -43,9 +49,10 @@ public class Main_SegmentTree {
 
         /**
          * left <= right
+         *
          * @param left
          * @param right
-         * @return 
+         * @return
          */
         public int query(int left, int right) {
             return query(1, 0, rawLen - 1, left, right);
@@ -59,9 +66,12 @@ public class Main_SegmentTree {
          * Invariant: rangeBegin <= left <= right <= rangeEnd
          */
         private int query(int treeNodeIdx, int rangeBegin, int rangeEnd, int left, int right) {
-            Integer leftResult = null;
-            Integer rightResult = null;
+            int leftResult = Integer.MAX_VALUE;
+            int rightResult = Integer.MAX_VALUE;;
             if (rangeBegin == rangeEnd) {
+                return tree[treeNodeIdx];
+            }
+            if (left == rangeBegin && right == rangeEnd) {
                 return tree[treeNodeIdx];
             }
             int rangeMid = (rangeBegin + rangeEnd) / 2;
@@ -71,13 +81,9 @@ public class Main_SegmentTree {
             if (rangeMid + 1 <= right) {
                 rightResult = query(treeNodeIdx * 2 + 1, rangeMid + 1, rangeEnd, Math.max(left, rangeMid + 1), right);
             }
-            if (leftResult == null) {
-                return rightResult;
-            } else if (rightResult == null) {
-                return leftResult;
-            } else {
-                return Math.min(leftResult, rightResult);
-            }
+
+            return Math.min(leftResult, rightResult);
+
         }
 
         private void update(int idxToUpdate, int newValue, int idx, int rangeBegin, int rangeEnd) {
@@ -96,25 +102,33 @@ public class Main_SegmentTree {
 
     }
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
+    private static final StreamTokenizer in = new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));
+    private static final PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
+
+    public static int nextInt() throws IOException {
+        in.nextToken();
+        return (int) in.nval;
+    }
+
+    public static void main(String[] args) throws Exception {
+        int n = nextInt();
         int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
-            arr[i] = scanner.nextInt();
+            arr[i] = nextInt();
         }
         SegmentTree segTree = new SegmentTree(arr);
-        int q = scanner.nextInt();
+        int q = nextInt();
         while (q-- > 0) {
-            if (scanner.nextInt() == 0) { // query
-                int l = scanner.nextInt() - 1;
-                int r = scanner.nextInt() - 1;
-                System.out.println(segTree.query(l, r));
-            } else { // update
-                int idx = scanner.nextInt();
-                int value = scanner.nextInt();
+            if (nextInt() == 1) { // update
+                int idx = nextInt();
+                int value = nextInt();
                 segTree.update(idx - 1, value);
+            } else { // query
+                int l = nextInt() - 1;
+                int r = nextInt() - 1;
+                out.println(segTree.query(l, r));
             }
         }
+        out.flush();
     }
 }

@@ -16,7 +16,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## Minimal Spanning Tree Prim Lazy
 ## Minimal Spanning Tree Prim Eager
 ## Minimal Spanning Tree Kruskal
-## Union Find
+## [Union Find] (http://myencyclopedia.top/blog/2016/08/union-find/)
 
 # 04_Advanced_Data_Structure
 ## Treap
