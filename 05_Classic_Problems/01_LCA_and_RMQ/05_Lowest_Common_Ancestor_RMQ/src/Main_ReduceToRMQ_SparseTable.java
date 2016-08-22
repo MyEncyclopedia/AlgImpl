@@ -1,6 +1,6 @@
 
 /**
- * http://hihocoder.com/problemset/problem/1069
+ * http://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_5_C
  */
 /**
  * Result: AC
@@ -15,22 +15,25 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.StreamTokenizer;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Stack;
 
-public class Main_SparseTable {
+public class Main_ReduceToRMQ_SparseTable {
 
     static class Node {
 
-        String name;
+        int id;
         Node parent;
         List<Node> children;
 
-        public Node(String name, Node parent) {
-            this.name = name;
+        public Node(int id) {
+            children = new ArrayList<Node>();
+            this.id = id;
+        }
+
+        public Node(int id, Node parent) {
+            this.id = id;
             this.parent = parent;
             children = new ArrayList<Node>();
             if (parent != null) {
@@ -43,35 +46,28 @@ public class Main_SparseTable {
 
         Node root;
         List<Node> nodeList;
-        Map<String, Integer> nameToId;
-        static int nextNodeId = 0;
         int n;
 
         public TreeHelper(int n) {
-            this.n = n;
-            nameToId = new HashMap<String, Integer>();
             nodeList = new ArrayList<Node>();
-        }
-
-        public void createChild(String parentName, String childName) {
-            if (root == null) {
-                root = new Node(parentName, null);
-                nameToId.put(parentName, nextNodeId++);
-                nodeList.add(root);
+            for (int i = 0; i < n; i++) {
+                nodeList.add(new Node(i));
             }
-            Node parent = nodeList.get(nameToId.get(parentName));
-            Node child = new Node(childName, parent);
-            nameToId.put(childName, nextNodeId++);
-            nodeList.add(child);
+            root = nodeList.get(0);
+            this.n = n;
         }
 
-        public int getNodeIdx(String name) {
-            return nameToId.get(name);
+        public void createChild(int parentId, int[] children) {
+            Node parent = nodeList.get(parentId);
+            for (int childId : children) {
+                Node child = nodeList.get(childId);
+                parent.children.add(child);
+                child.parent = parent;
+            }
         }
 
-        public Node getNodeOf(String name) {
-            Integer id = nameToId.get(name);
-            return nodeList.get(id);
+        public Node getNodeAt(int idx) {
+            return nodeList.get(idx);
         }
     }
 
@@ -101,29 +97,27 @@ public class Main_SparseTable {
                     dfsStack.push(new NodeWithIterator(child));
                     depth++;
                     visitIdx++;
-                    int childIdx = treeHelper.getNodeIdx(child.name);
-                    euler[visitIdx] = childIdx;
+                    euler[visitIdx] = child.id;
                     level[visitIdx] = depth;
-                    h[childIdx] = visitIdx;
+                    h[child.id] = visitIdx;
                 } else {
-                    depth--;
                     dfsStack.pop();
+                    depth--;
                     if (!dfsStack.isEmpty()) {
                         visitIdx++;
-                        euler[visitIdx] = treeHelper.getNodeIdx(dfsStack.peek().node.name);
+                        euler[visitIdx] = dfsStack.peek().node.id;
                         level[visitIdx] = depth;
                     }
                 }
             }
-
             rmq = new RMQ_SparseTable(level);
         }
 
         public Node lca(Node n1, Node n2) {
-            int n1Idx = h[treeHelper.getNodeIdx(n1.name)];
-            int n2Idx = h[treeHelper.getNodeIdx(n2.name)];
-            int leftVisitIdx = Math.min(n1Idx, n2Idx);
-            int rightVisitIdx = Math.max(n1Idx, n2Idx);
+            int n1VisitIdx = h[n1.id];
+            int n2VisitIdx = h[n2.id];
+            int leftVisitIdx = Math.min(n1VisitIdx, n2VisitIdx);
+            int rightVisitIdx = Math.max(n1VisitIdx, n2VisitIdx);
 
             int minVisitIdx = rmq.query(leftVisitIdx, rightVisitIdx);
             int lcaNodeIdx = euler[minVisitIdx];
@@ -171,7 +165,6 @@ public class Main_SparseTable {
 
         /**
          * left <= right
-         *
          * @param left zero-based
          * @param right zero-based
          * @return index to input array
@@ -188,21 +181,24 @@ public class Main_SparseTable {
 
     public static void main(String[] args) throws IOException {
         int n = nextInt();
-        TreeHelper treeHelper = new TreeHelper(n + 1);
-        while (n-- > 0) {
-            String father = nextString();
-            String son = nextString();
-            treeHelper.createChild(father, son);
+        TreeHelper treeHelper = new TreeHelper(n);
+        for (int parentIdx = 0; parentIdx < n; parentIdx++) {
+            int childNum = nextInt();
+            int[] children = new int[childNum];
+            for (int childIdx = 0; childIdx < childNum; childIdx++) {
+                children[childIdx] = nextInt();
+            }
+            treeHelper.createChild(parentIdx, children);
         }
         ReductionToRMQ rmqSolver = new ReductionToRMQ(treeHelper);
+
         int q = nextInt();
         while (q-- > 0) {
-            String name1 = nextString();
-            String name2 = nextString();
-            Node n1 = treeHelper.getNodeOf(name1);
-            Node n2 = treeHelper.getNodeOf(name2);
-            out.println(rmqSolver.lca(n1, n2).name);
+            int id1 = nextInt();
+            int id2 = nextInt();
+            out.println(rmqSolver.lca(treeHelper.getNodeAt(id1), treeHelper.getNodeAt(id2)).id);
         }
+
         out.flush();
     }
 
@@ -218,4 +214,5 @@ public class Main_SparseTable {
         in.nextToken();
         return in.sval;
     }
+
 }
