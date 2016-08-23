@@ -4,9 +4,9 @@
  */
 /**
  * Result: AC
- * TC: Preprocess: O(N*log(N))
- *     Query:      O(Q*log(N))
- * SC: O(N*log(N))
+ * TC: Preprocess: O(4N)
+ *     Query:      O(Q*log(2N))
+ * SC: O(4N)
  */
 import java.io.BufferedReader;
 import java.io.IOException;
