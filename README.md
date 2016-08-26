@@ -18,6 +18,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## Minimal Spanning Tree Kruskal
 ## [Union Find] (http://myencyclopedia.top/blog/2016/08/union-find/)
 ## Topological Sort
+## KMP
 
 # 04_Advanced_Data_Structure
 ## Treap
