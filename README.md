@@ -25,6 +25,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## Segment Tree
 ## Binary Indexed Tree
 ## Trie
+## Splay Tree
 
 # 05_Classic_Problems
 ## 01_LCA_and_RMQ
