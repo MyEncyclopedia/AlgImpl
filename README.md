@@ -19,6 +19,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## [Union Find] (http://myencyclopedia.top/blog/2016/08/union-find/)
 ## Topological Sort
 ## KMP
+## Priority Queue
 
 # 04_Advanced_Data_Structure
 ## Treap
