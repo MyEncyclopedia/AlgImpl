@@ -7,6 +7,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## [TF-IDF (Java)](http://myencyclopedia.top/blog/2015/10/tf-idf/)
 ## [PageRank Power Iteration (Python)](http://myencyclopedia.top/blog/2015/09/pagerank/)
 ## [Apriori (Java)](http://myencyclopedia.top/blog/2015/11/apriori/)
+## Bloom Filter
 
 # 02_Machine_Learning
 ## [Batch Gradient Descent of Linear Regression (Python)](http://myencyclopedia.top/blog/2015/09/batch-gradient-descent/)
