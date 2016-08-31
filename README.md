@@ -19,7 +19,8 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## Minimal Spanning Tree Kruskal
 ## [Union Find] (http://myencyclopedia.top/blog/2016/08/union-find/)
 ## Topological Sort
-## KMP
+## String Match - KMP
+## String Match - Rabin Karp
 ## Priority Queue
 
 # 04_Advanced_Data_Structure
@@ -36,7 +37,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ### 03 LCA
 ### 04 LCA Tarjan
 ### 05 LCA Reduced To RMQ
-## 01_Knapsack
+## 02_Knapsack
 ### 01 0/1 Knapsack
 ### 02 Complete Knapsack
 
