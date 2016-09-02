@@ -18,6 +18,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## Minimal Spanning Tree Prim Eager
 ## Minimal Spanning Tree Kruskal
 ## [Union Find] (http://myencyclopedia.top/blog/2016/08/union-find/)
+## Knuth Shuffle
 ## Topological Sort
 ## String Match - KMP
 ## String Match - Rabin Karp
