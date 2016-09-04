@@ -44,4 +44,5 @@ http://myencyclopedia.top/blog/category/algorithm/
 
 # 06_Leetcode
 ## 139_Word_Break
+## 089_Gray_Code 
 
