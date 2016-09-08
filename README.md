@@ -43,6 +43,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ### 02 Complete Knapsack
 
 # 06_Leetcode
-## 139_Word_Break
-## 089_Gray_Code 
+## 089 Gray Code 
+## 139 Word Break
+## 309 Best Time to Buy and Sell Stock with Cooldown
 
