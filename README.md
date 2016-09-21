@@ -13,7 +13,8 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## [Batch Gradient Descent of Linear Regression (Python)](http://myencyclopedia.top/blog/2015/09/batch-gradient-descent/)
 
 # 03_Algorithms_Sedgewick
-## [Dijkstra Shortest Path](http://myencyclopedia.top/blog/2016/07/dijkstra-single-source-shortest-path/)
+## [Dijkstra Single Source Shortest Path](http://myencyclopedia.top/blog/2016/07/dijkstra-single-source-shortest-path/)
+## Bellman Ford Single Source Shortest Path (Negative Weights)
 ## Minimal Spanning Tree Prim Lazy
 ## Minimal Spanning Tree Prim Eager
 ## Minimal Spanning Tree Kruskal
@@ -42,7 +43,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ### 01 0/1 Knapsack
 ### 02 Complete Knapsack
 
-# 06_Leetcode
+# 06_Thinking_Leetcode
 ## 089 Gray Code 
 ## 139 Word Break
 ## 188 Best Time to Buy and Sell Stock IV
