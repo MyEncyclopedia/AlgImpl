@@ -13,8 +13,6 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## [Batch Gradient Descent of Linear Regression (Python)](http://myencyclopedia.top/blog/2015/09/batch-gradient-descent/)
 
 # 03_Algorithms_Sedgewick
-## [Dijkstra Single Source Shortest Path](http://myencyclopedia.top/blog/2016/07/dijkstra-single-source-shortest-path/)
-## Bellman Ford Single Source Shortest Path (Negative Weights)
 ## Minimal Spanning Tree Prim Lazy
 ## Minimal Spanning Tree Prim Eager
 ## Minimal Spanning Tree Kruskal
@@ -32,7 +30,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## Trie
 ## Splay Tree
 
-# 05_Classic_Problems
+# 05_Classic_Algorithm_Series
 ## 01_LCA_and_RMQ
 ### 01 RMQ Sparse Table
 ### 02 RMQ Segment Tree
@@ -42,6 +40,10 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## 02_Knapsack
 ### 01 0/1 Knapsack
 ### 02 Complete Knapsack
+## 03_Shortest_Path
+### [01 Dijkstra Single Source Shortest Path](http://myencyclopedia.top/blog/2016/07/dijkstra-single-source-shortest-path/)
+### 02 Bellman Ford Single Source Shortest Path (Negative Weights)
+### 03 Floyd Warshall All Pairs Shortest Path
 
 # 06_Thinking_Leetcode
 ## 089 Gray Code 
