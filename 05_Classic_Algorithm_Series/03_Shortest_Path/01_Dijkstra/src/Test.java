@@ -2,7 +2,7 @@
 public class Test {
 
     public static void main(String[] args) {
-        Dijkstra.WeightedDigraph graph = new Dijkstra.WeightedDigraph(4, 5);
+        Dijkstra.WeightedDigraph graph = new Dijkstra.WeightedDigraph(4);
         graph.addEdge(0, 1, 1);
         graph.addEdge(0, 2, 4);
         graph.addEdge(1, 2, 2);

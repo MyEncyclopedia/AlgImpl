@@ -70,15 +70,12 @@ public class Main_FloydWarshall {
     public static class WeightedDigraph {
 
         int numVertex;
-        int numEdge;
-
         List<Edge>[] srcEdges;
         List<Edge> edges;
 
         @SuppressWarnings("unchecked")
-        public WeightedDigraph(int numV, int numE) {
+        public WeightedDigraph(int numV) {
             this.numVertex = numV;
-            this.numEdge = numE;
             srcEdges = new List[numV];
             edges = new ArrayList<Edge>();
             for (int i = 0; i < numV; i++) {
@@ -111,7 +108,7 @@ public class Main_FloydWarshall {
         Scanner scanner = new Scanner(System.in);
         int numVertex = scanner.nextInt();
         int numEdge = scanner.nextInt();
-        WeightedDigraph graph = new WeightedDigraph(numVertex, numEdge);
+        WeightedDigraph graph = new WeightedDigraph(numVertex);
         while (numEdge-- > 0) {
             int srcV = scanner.nextInt();
             int targetV = scanner.nextInt();

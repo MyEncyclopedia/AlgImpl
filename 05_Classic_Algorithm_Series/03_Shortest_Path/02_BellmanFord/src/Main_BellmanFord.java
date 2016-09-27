@@ -95,14 +95,12 @@ public class Main_BellmanFord {
     public static class WeightedDigraph {
 
         int numVertex;
-        int numEdge;
 
         List<Edge>[] srcEdges;
 
         @SuppressWarnings("unchecked")
-        public WeightedDigraph(int numV, int numE) {
+        public WeightedDigraph(int numV) {
             this.numVertex = numV;
-            this.numEdge = numE;
             srcEdges = new List[numV];
 
             for (int i = 0; i < numV; i++) {
@@ -134,7 +132,7 @@ public class Main_BellmanFord {
         Scanner scanner = new Scanner(System.in);
         int numVertex = scanner.nextInt();
         int numEdge = scanner.nextInt();
-        WeightedDigraph graph = new WeightedDigraph(numVertex, numEdge);
+        WeightedDigraph graph = new WeightedDigraph(numVertex);
         int srcVertex = scanner.nextInt();
         while (numEdge-- > 0) {
             int srcV = scanner.nextInt();
