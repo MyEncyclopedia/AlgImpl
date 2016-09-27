@@ -42,12 +42,13 @@ http://myencyclopedia.top/blog/category/algorithm/
 ### 02 Complete Knapsack
 ## 03_Shortest_Path
 ### [01 Dijkstra Single Source Shortest Path](http://myencyclopedia.top/blog/2016/07/dijkstra-single-source-shortest-path/)
-### 02 Bellman Ford Single Source Shortest Path (Negative Weights)
-### 03 Floyd Warshall All Pairs Shortest Path
+### 02 Bellman-Ford Single Source Shortest Path (Negative Weights)
+### 03 Floyd-Warshall All Pairs Shortest Path
 ## 04_MaxFlow_and_Bipartite
 ### 01 Bipartite Test
 ### 02 Bipartite Match Hungarian
-### 03 Maximum Flow FordFulkerson
+### 03 Maximum Flow Ford-Fulkerson
+### 04 Maximum Flow Dinic
 
 
 # 06_Thinking_Leetcode
