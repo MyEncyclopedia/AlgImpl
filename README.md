@@ -19,8 +19,8 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## [Union Find] (http://myencyclopedia.top/blog/2016/08/union-find/)
 ## Knuth Shuffle
 ## Topological Sort
-## String Match - KMP
-## String Match - Rabin Karp
+## String Match - Knuth–Morris–Pratt(KMP)
+## String Match - Rabin-Karp
 ## Priority Queue
 
 # 04_Advanced_Data_Structure
@@ -49,6 +49,7 @@ http://myencyclopedia.top/blog/category/algorithm/
 ### 02 Bipartite Match Hungarian
 ### 03 Maximum Flow Ford-Fulkerson
 ### 04 Maximum Flow Dinic
+### 05 Bipartite Match Reduced To Max
 
 
 # 06_Thinking_Leetcode
