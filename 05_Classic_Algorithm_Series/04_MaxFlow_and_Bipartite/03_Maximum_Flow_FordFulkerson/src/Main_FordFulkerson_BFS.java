@@ -40,7 +40,7 @@ public class Main_FordFulkerson_BFS {
         private int findAugmentPath() {
             boolean[] used = new boolean[residualG.numVertex];
             int[] minFlow = new int[residualG.numVertex];
-            HashMap<WeightedDigraph.Edge, WeightedDigraph.Edge> edgeLink
+            HashMap<WeightedDigraph.Edge, WeightedDigraph.Edge> edgePred
                     = new HashMap<WeightedDigraph.Edge, WeightedDigraph.Edge>();
             Queue<WeightedDigraph.Edge> edgeQueue = new LinkedList<WeightedDigraph.Edge>();
             used[srcVert] = true;
@@ -55,7 +55,7 @@ public class Main_FordFulkerson_BFS {
                         minFlow[e.targetVertex] = Math.min(minFlow[e.srcVertex], e.weight);
                         used[e.targetVertex] = true;
                         edgeQueue.add(e);
-                        edgeLink.put(e, currentEdge);
+                        edgePred.put(e, currentEdge);
                     }
                 }
                 if (edgeQueue.isEmpty()) {
@@ -64,7 +64,7 @@ public class Main_FordFulkerson_BFS {
                 currentEdge = edgeQueue.poll();
                 vert = currentEdge.targetVertex;
                 if (currentEdge.targetVertex == termVert) {
-                    updateResidualGraph(minFlow[termVert], currentEdge, edgeLink);
+                    updateResidualGraph(minFlow[termVert], currentEdge, edgePred);
                     return minFlow[termVert];
                 }
             } while (true);
@@ -72,11 +72,12 @@ public class Main_FordFulkerson_BFS {
             return 0;
         }
 
-        private void updateResidualGraph(int flow, WeightedDigraph.Edge lastEdge, HashMap<WeightedDigraph.Edge, WeightedDigraph.Edge> edgeLink) {
+        private void updateResidualGraph(int flow, WeightedDigraph.Edge lastEdge, HashMap<WeightedDigraph.Edge, 
+                WeightedDigraph.Edge> edgePred) {
             while (lastEdge != null) {
                 lastEdge.weight -= flow;
                 residualG.edgeMap.get(lastEdge).weight += flow;
-                lastEdge = edgeLink.get(lastEdge);
+                lastEdge = edgePred.get(lastEdge);
             }
         }
     }
