@@ -5,7 +5,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.junit.Test;
 
-public class UnitTest extends AbstractUnitTest {
+public class WordCount_Test extends AbstractUnitTest {
 
     @Test
     public void test() throws Exception {
