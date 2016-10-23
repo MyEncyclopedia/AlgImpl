@@ -61,3 +61,4 @@ http://myencyclopedia.top/blog/category/algorithm/
 # 07_Data_Intensive_Text_Processing_with_MapReduce
 ## ch03_MapReduce_Algorithm_Design
 ### 01_WordCount 
+### 02_Mean
