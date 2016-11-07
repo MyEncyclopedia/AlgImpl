@@ -59,6 +59,8 @@ http://myencyclopedia.top/blog/category/algorithm/
 ## 309 Best Time to Buy and Sell Stock with Cooldown
 
 # 07_Data_Intensive_Text_Processing_with_MapReduce
-## ch03_MapReduce_Algorithm_Design
+## ch03 MapReduce Algorithm Design
 ### 01_WordCount 
 ### 02_Mean
+## ch04 Inverted Indexing for Text Retrieval
+
